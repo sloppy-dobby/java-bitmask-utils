@@ -17,6 +17,11 @@
 
         <!-- Dependencies versions -->
         <junit.version>4.13.2</junit.version>
+        <!-- Maven plugin versions -->
+        <central.publishing.maven.plugin.version>0.5.0</central.publishing.maven.plugin.version>
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>3.8.0</maven.javadoc.plugin.version>
+        <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -74,7 +79,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.5.0</version>
+                <version>${central.publishing.maven.plugin.version}</version>
                 <configuration>
                     <publishingServerId>nexus-releases</publishingServerId>
                 </configuration>
@@ -83,7 +88,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>${maven.source.plugin.version}</version>
 
                 <executions>
                     <execution>
@@ -100,7 +105,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven.javadoc.plugin.version}</version>
 
                 <executions>
                     <execution>
@@ -117,7 +122,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
+                <version>${maven.gpg.plugin.version}</version>
 
                 <executions>
                     <execution>
