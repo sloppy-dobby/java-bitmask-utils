@@ -15,14 +15,15 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Dependencies versions -->
-        <junit.version>4.13.2</junit.version>
-
-        <!-- Maven plugin versions -->
+        <!-- Maven plugins versions -->
         <central.publishing.maven.plugin.version>0.5.0</central.publishing.maven.plugin.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.javadoc.plugin.version>3.8.0</maven.javadoc.plugin.version>
         <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
+
+        <!-- Dependencies versions -->
+        <junit.version>4.13.2</junit.version>
+
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
