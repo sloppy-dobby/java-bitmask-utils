@@ -7,7 +7,7 @@
 
     <groupId>com.sloppydobby</groupId>
     <artifactId>java-bitmask-utils</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -15,8 +15,58 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- Maven plugins versions -->
+        <central.publishing.maven.plugin.version>0.5.0</central.publishing.maven.plugin.version>
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>3.8.0</maven.javadoc.plugin.version>
+        <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
+
+        <!-- Dependencies versions -->
         <junit.version>4.13.2</junit.version>
+
     </properties>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Bitmask utilities for Java</description>
+    <url>https://github.com/sloppy-dobby/java-bitmask-utils</url>
+
+    <developers>
+        <developer>
+            <name>Sergey Grigorov</name>
+            <email>sergey.gunslinger@gmail.com</email>
+            <url>https://github.com/sloppy-dobby</url>
+            <organization>Sloppy Dobby, Inc</organization>
+            <organizationUrl>https://sloppydobby.com</organizationUrl>
+        </developer>
+
+        <developer>
+            <name>Nikita Parmenov</name>
+            <email>parmenov.nik44@gmail.com</email>
+            <url>https://github.com/ragnvold</url>
+            <organization>Sloppy Dobby, Inc</organization>
+            <organizationUrl>https://sloppydobby.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <url>https://github.com/sloppy-dobby/java-bitmask-utils/blob/master/LICENSE</url>
+            <name>MIT License</name>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/sloppy-dobby/java-bitmask-utils</url>
+        <connection>scm:git:git://github.com/sloppy-dobby/java-bitmask-utils.git</connection>
+        <developerConnection>scm:git:git@github.com/sloppy-dobby/java-bitmask-utils.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -26,4 +76,75 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${central.publishing.maven.plugin.version}</version>
+                <configuration>
+                    <publishingServerId>ossrh</publishingServerId>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin.version}</version>
+
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.plugin.version}</version>
+
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+
+                        <configuration>
+                            <gpgArguments>
+                                <argument>--pinentry-mode</argument>
+                                <argument>loopback</argument>
+                            </gpgArguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
