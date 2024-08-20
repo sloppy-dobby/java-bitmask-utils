@@ -1,7 +1,7 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0">
     <servers>
         <server>
-            <id>nexus-releases</id>
+            <id>ossrh</id>
             <username>${env.JAVA_BITMASK_UTILS_MAVEN_USERNAME}</username>
             <password>${env.JAVA_BITMASK_UTILS_MAVEN_PASSWORD}</password>
         </server>
@@ -9,7 +9,7 @@
 
     <profiles>
         <profile>
-            <id>nexus-releases</id>
+            <id>ossrh</id>
 
             <activation>
                 <activeByDefault>true</activeByDefault>
