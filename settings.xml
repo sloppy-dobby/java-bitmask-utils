@@ -1,0 +1,25 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0">
+    <servers>
+        <server>
+            <id>nexus-releases</id>
+            <username>${env.JAVA_BITMASK_UTILS_MAVEN_USERNAME}</username>
+            <password>${env.JAVA_BITMASK_UTILS_MAVEN_PASSWORD}</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>nexus-releases</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.keyname>${env.JAVA_BITMASK_UTILS_MAVEN_GPG_KEYNAME}</gpg.keyname>
+                <gpg.passphrase>${env.JAVA_BITMASK_UTILS_MAVEN_GPG_PASSPHRASE}</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
+</settings>
